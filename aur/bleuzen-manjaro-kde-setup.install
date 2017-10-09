@@ -2,6 +2,8 @@ post_install() {
     if [ -d "/opt/teamviewer/" ]; then
         systemctl enable teamviewerd
     fi
+
+    echo "TODO: add current user to vboxusers group if Virtual Box is installed"
 }
 
 post_upgrade() {
