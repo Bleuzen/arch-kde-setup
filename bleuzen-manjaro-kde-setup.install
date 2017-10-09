@@ -1,0 +1,9 @@
+post_install() {
+    if [ -d "/opt/teamviewer/" ]; then
+        systemctl enable teamviewerd
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
