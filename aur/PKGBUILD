@@ -32,8 +32,8 @@ optdepends=("powerpill"
             "flac")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
-source=("scripts.zip")
-md5sums=("eddbeb62a2b79912ee49a93c9590fb24")
+source=("https://github.com/Bleuzen/manjaro-kde-setup/releases/download/$pkgver-$pkgrel/scripts.zip")
+md5sums=("79e5fa9b85790f5cc8a9fa8a9bf33357")
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
