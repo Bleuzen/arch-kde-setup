@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]];
+then
+    exec sudo /bin/bash "$0" "$@"
+fi
+
+pacman-mirrors -f 10
+pacman -Syy
