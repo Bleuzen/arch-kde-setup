@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2017.10.09
+pkgver=2017.10.30
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -17,11 +17,14 @@ depends=("pamac"
          "frei0r-plugins")
 optdepends=("powerpill"
             "chromium"
+            "latte-dock"
             "gimp"
-            "redshift"
-            "plasma5-applets-redshift-control"
+            "audacity"
+            "obs-studio"
+            "redshift" "plasma5-applets-redshift-control"
             "proguard"
             "file-roller"
+            "gparted"
             "tk"
             "gnome-calculator"
             "soundkonverter"
@@ -29,11 +32,11 @@ optdepends=("powerpill"
             "lame"
             "vorbis-tools"
             "opus-tools"
-            "flac")
+            "flac"
+            "flatpak"
+            "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
-source=("https://github.com/Bleuzen/manjaro-kde-setup/releases/download/$pkgver-$pkgrel/scripts.zip")
-md5sums=("79e5fa9b85790f5cc8a9fa8a9bf33357")
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
