@@ -1,0 +1,5 @@
+#!/bin/bash
+PROCESS_NAME="$1"
+
+killall $PROCESS_NAME
+$PROCESS_NAME
