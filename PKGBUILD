@@ -1,8 +1,8 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2017.11.01
-pkgrel=2
+pkgver=2017.11.08
+pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -34,7 +34,8 @@ optdepends=("powerpill"
             "opus-tools"
             "flac"
             "flatpak"
-            "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config")
+            "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
+            "keepassxc")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
 
