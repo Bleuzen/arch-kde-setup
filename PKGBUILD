@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2017.11.08
-pkgrel=1
+pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -35,7 +35,8 @@ optdepends=("powerpill"
             "flac"
             "flatpak"
             "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
-            "keepassxc")
+            "keepassxc"
+            "adapta-gtk-theme" "adapta-kde" "kvantum-theme-adapta" "papirus-icon-theme")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
 
