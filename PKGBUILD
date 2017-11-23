@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2017.11.22
+pkgver=2017.11.23
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -38,7 +38,8 @@ optdepends=("powerpill"
             "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
             "keepassxc"
             "adapta-gtk-theme" "adapta-kde" "kvantum-theme-adapta" "papirus-icon-theme"
-            "plasma-vault" "cryfs")
+            "plasma-vault" "cryfs"
+            "libva-vdpau-driver")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
 
