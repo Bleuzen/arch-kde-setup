@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.01.21
+pkgver=2018.01.27
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -15,9 +15,9 @@ depends=("pamac"
          "wget"
          "zip"
          "frei0r-plugins"
-         "xorg-xrandr")
+         "xorg-xrandr"
+         "yaourt")
 optdepends=("powerpill"
-            "yaourt"
             "chromium"
             "latte-dock"
             "gimp"
@@ -54,6 +54,7 @@ package() {
 
   install -D "scripts/update-mirrors-fasttrack" "$pkgdir/usr/bin/"
   install -D "scripts/restart-process" "$pkgdir/usr/bin/"
+  install -D "scripts/remove-unrequired-dependencies" "$pkgdir/usr/bin/"
   
   # Permission example:
   #install -Dm644
