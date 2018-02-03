@@ -4,5 +4,5 @@ then
     exec sudo /bin/bash "$0" "$@"
 fi
 
-pacman-mirrors -f 10
+pacman-mirrors -f 5
 pacman -Syy
