@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2018.02.03
-pkgrel=1
+pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -52,7 +52,7 @@ install=$pkgname.install
 package() {
   mkdir -p "$pkgdir/usr/bin/"
 
-  install -D "scripts/update-mirrors-fasttrack" "$pkgdir/usr/bin/"
+  install -D "scripts/update-mirrors" "$pkgdir/usr/bin/"
   install -D "scripts/restart-process" "$pkgdir/usr/bin/"
   install -D "scripts/remove-unrequired-dependencies" "$pkgdir/usr/bin/"
   
