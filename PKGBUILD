@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2018.02.21
-pkgrel=2
+pkgrel=3
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -10,6 +10,7 @@ depends=("pamac"
          "pamac-tray-appindicator"
          "xdg-desktop-portal-gtk"
          "xdg-desktop-portal-kde"
+         "flatpak"
          "rsync"
          "bash-completion"
          "wget"
@@ -34,7 +35,6 @@ optdepends=("powerpill"
             "vorbis-tools"
             "opus-tools"
             "flac"
-            "flatpak"
             "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
             "keepassxc"
             "adapta-gtk-theme" "adapta-kde" "kvantum-theme-adapta" "papirus-icon-theme"
