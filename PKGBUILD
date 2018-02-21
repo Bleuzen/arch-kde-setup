@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2018.02.21
-pkgrel=3
+pkgrel=4
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -45,7 +45,8 @@ optdepends=("powerpill"
             "pulseeffects"
             "youtube-dl"
             "telegram-desktop"
-            "testdisk")
+            "testdisk"
+            "wireshark-qt")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
 
