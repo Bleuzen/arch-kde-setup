@@ -1,0 +1,12 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]];
+then
+    exec sudo /bin/bash "$0" "$@"
+fi
+
+# System updates
+update-mirrors
+pacman -Su
+
+# Flatpak updates
+flatpak update
