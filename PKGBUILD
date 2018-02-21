@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2018.02.21
-pkgrel=1
+pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -58,7 +58,7 @@ package() {
 
   for file in "scripts/*"
   do
-    install -D $file "$pkgdir/usr/bin/"
+    install -m755 $file "$pkgdir/usr/bin/"
   done
 
   # Permission example:
