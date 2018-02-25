@@ -5,8 +5,14 @@ then
 fi
 
 # System updates
+# Refresh mirrorlist
 update-mirrors
-pacman -Su
+# Update, use pacserve if it is installed
+if hash "pacsrv" 2>/dev/null; then
+    pacsrv -Su
+else
+    pacman -Su
+fi
 
 # Flatpak updates
 flatpak update

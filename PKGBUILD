@@ -19,6 +19,7 @@ depends=("pamac"
          "xorg-xrandr"
          "yaourt")
 optdepends=("powerpill"
+            "pacserve"
             "chromium"
             "latte-dock"
             "gimp"
