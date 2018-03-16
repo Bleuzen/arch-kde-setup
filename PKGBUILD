@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.02.25
+pkgver=2018.03.16
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -47,17 +47,14 @@ optdepends=("powerpill"
             "youtube-dl"
             "telegram-desktop"
             "testdisk"
-            "wireshark-qt")
+            "wireshark-qt"
+            "lollypop")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
-
-  #install -D "scripts/update-mirrors" "$pkgdir/usr/bin/"
-  #install -D "scripts/restart-process" "$pkgdir/usr/bin/"
-  #install -D "scripts/remove-unrequired-dependencies" "$pkgdir/usr/bin/"
-
+  
   for file in "scripts/*"
   do
     install -m755 $file "$pkgdir/usr/bin/"
