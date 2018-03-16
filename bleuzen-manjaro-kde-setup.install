@@ -1,4 +1,12 @@
 post_install() {
+    # Add the Flathub repository
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+    # Enable Pacserve service
+    if [ -f "/usr/bin/pacserve" ]; then
+        systemctl enable pacserve.service
+    fi
+
     # Enable TeamViewer daemon
     if [ -d "/opt/teamviewer/" ]; then
         systemctl enable teamviewerd

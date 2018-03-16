@@ -1,0 +1,18 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]];
+then
+    exec sudo /bin/bash "$0" "$@"
+fi
+
+# System updates
+# Refresh mirrorlist
+update-mirrors
+# Update, use pacserve if it is installed
+if hash "pacsrv" 2>/dev/null; then
+    pacsrv -Su
+else
+    pacman -Su
+fi
+
+# Flatpak updates
+flatpak update
