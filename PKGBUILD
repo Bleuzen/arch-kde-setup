@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.03.16
+pkgver=2018.03.26
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -48,7 +48,9 @@ optdepends=("powerpill"
             "telegram-desktop"
             "testdisk"
             "wireshark-qt"
-            "lollypop")
+            "lollypop"
+            "kdenlive"
+            "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver")
 conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
 
