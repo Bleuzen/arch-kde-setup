@@ -18,8 +18,8 @@ post_install() {
     then
         echo "Swap file already created, skipping ..."
     else
-        echo "Creating swapfile ...."
-        fallocate -l 4G $SWAPFILE
+        echo "Creating swap file ..."
+        fallocate -l 6G $SWAPFILE
         chmod 600 $SWAPFILE
         mkswap $SWAPFILE
         swapon $SWAPFILE

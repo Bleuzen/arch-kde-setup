@@ -1,0 +1,30 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]];
+then
+    exec sudo /bin/bash "$0" "$@"
+fi
+
+if [ -z "$1" ]
+then
+    echo "Please pass the new size as an argument for this command."
+    echo "Example:"
+    echo "$0 6G"
+    exit 1
+fi
+
+NEW_SIZE="$1"
+SWAPFILE="/swapfile"
+
+if [ -f "$SWAPFILE" ]
+then
+    swapoff $SWAPFILE
+    rm $SWAPFILE
+    echo "Deleted old swap file"
+fi
+
+echo "(Re)creating swap file ..."
+fallocate -l $NEW_SIZE $SWAPFILE
+chmod 600 $SWAPFILE
+mkswap $SWAPFILE
+swapon $SWAPFILE
+#echo "$SWAPFILE none swap defaults 0 0" >> /etc/fstab
