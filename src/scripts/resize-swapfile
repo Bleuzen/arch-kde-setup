@@ -6,7 +6,7 @@ fi
 
 if [ -z "$1" ]
 then
-    echo "Please pass the new size as an argument for this command."
+    echo "Please pass the new size (or 'disable') as an argument for this command."
     echo "Example:"
     echo "$0 6G"
     exit 1
@@ -14,6 +14,7 @@ fi
 
 NEW_SIZE="$1"
 SWAPFILE="/swapfile"
+FSTAB_LINE="$SWAPFILE none swap defaults 0 0"
 
 if [ -f "$SWAPFILE" ]
 then
@@ -22,9 +23,25 @@ then
     echo "Deleted old swap file"
 fi
 
+if [ $NEW_SIZE = "disable" ]
+then
+    # Only create an empty dummy file and exit
+    echo "" > $SWAPFILE
+    echo "Swap file disabled"
+
+    # Remove fstab entry
+    sed -i.bak "\@^$FSTAB_LINE@d" /etc/fstab
+
+    # Display warning message
+    echo "WARNING: This also removed the /etc/fstab entry for the swapfile. Currently re-creating it is not supported. You have to add the entry manually if you want to enable the swapfile again."
+
+    # Exit since we are done at this point
+    exit 0
+fi
+
 echo "(Re)creating swap file ..."
 fallocate -l $NEW_SIZE $SWAPFILE
 chmod 600 $SWAPFILE
 mkswap $SWAPFILE
 swapon $SWAPFILE
-#echo "$SWAPFILE none swap defaults 0 0" >> /etc/fstab
+#echo $FSTAB_LINE >> /etc/fstab

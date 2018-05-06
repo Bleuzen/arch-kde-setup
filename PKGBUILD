@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.03.30
+pkgver=2018.05.06
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -17,7 +17,9 @@ depends=("pamac"
          "zip"
          "frei0r-plugins"
          "xorg-xrandr"
-         "yaourt")
+         "yaourt"
+         "htop"
+         "flac" "lame" "vorbis-tools" "opus-tools")
 optdepends=("powerpill"
             "pacserve"
             "chromium"
@@ -28,18 +30,13 @@ optdepends=("powerpill"
             "redshift" "plasma5-applets-redshift-control"
             "file-roller"
             "gparted" "gnome-disk-utility"
-            "tk"
+            "tk: git-cola gui fix"
             "gnome-calculator"
             "soundkonverter"
             "kid3"
-            "lame"
-            "vorbis-tools"
-            "opus-tools"
-            "flac"
             "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
             "keepassxc"
             "adapta-gtk-theme" "adapta-kde" "kvantum-theme-adapta" "papirus-icon-theme"
-            "plasma-vault" "cryfs"
             "libva-vdpau-driver"
             "android-file-transfer"
             "wine" "wine-mono" "wine_gecko" "winetricks"
