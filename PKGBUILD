@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.05.06
+pkgver=2018.05.09
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -52,13 +52,14 @@ conflicts=("octopi-notifier-frameworks")
 install=$pkgname.install
 
 package() {
+  # Copy scripts
   mkdir -p "$pkgdir/usr/bin/"
-  
   for file in "scripts/*"
   do
     install -m755 $file "$pkgdir/usr/bin/"
   done
 
-  # Permission example:
-  #install -Dm644
+  # Copy hotkeys
+  mkdir -p "$pkgdir/usr/share/khotkeys/"
+  install "bleuzensshortcuts.khotkeys" "$pkgdir/usr/share/khotkeys/"
 }
