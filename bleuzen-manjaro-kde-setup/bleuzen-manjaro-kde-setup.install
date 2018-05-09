@@ -28,6 +28,7 @@ post_install() {
 
     # Print TODO messages
     echo "TODO: add current user to vboxusers group if Virtual Box is installed"
+    echo "TODO: remove users from storage group"
 }
 
 post_upgrade() {
