@@ -10,4 +10,7 @@ fi
 
 SINK_NAME="$1"
 
-pactl load-module module-null-sink sink_name="$SINK_NAME" sink_properties=device.description="$SINK_NAME"
+SINK_ID=$(pactl load-module module-null-sink sink_name="$SINK_NAME" sink_properties=device.description="$SINK_NAME")
+
+echo "To unload this sink, type:"
+echo "pactl unload-module $SINK_ID"
