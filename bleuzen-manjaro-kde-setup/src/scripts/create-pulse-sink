@@ -1,19 +1,107 @@
-#!/bin/bash
+#!/usr/bin/python3
 
-if [ -z "$1" ]
-then
-    echo "Please pass the name as an argument for this command."
-    echo "Example:"
-    echo "$0 music"
-    exit 1
-fi
+import argparse
+import subprocess
+import sys
+import time
 
-SINK_NAME="$1"
+# Settings with Defaults
+_sink_name = "VSink"
+_mute_sink = False
+_unload_sink = ""
 
-SINK_ID=$(pactl load-module module-remap-sink sink_name="$SINK_NAME" sink_properties=device.description="$SINK_NAME" remix=no)
+# Hard-coded settings
+_print_shell_output = False
+_shell_executable = "/bin/bash"  # Default: "/bin/sh"
+_shell_encoding = "utf-8"
 
-# Optional: to set the master sink and number of channels:
-#pactl load-module module-remap-sink sink_name="$SINK_NAME" sink_properties=device.description="$SINK_NAME" master=alsa_output.pci-0000_00_1f.3.analog-stereo channels=2 remix=no
 
-echo "To unload this sink, type:"
-echo "pactl unload-module $SINK_ID"
+def main():
+    handle_command_line()
+
+    if _unload_sink:
+        PulseAudio.unload_sink(_unload_sink)
+        return
+
+    PulseAudio.load_sink()
+
+def handle_command_line():
+    global _sink_name
+    global _mute_sink
+    global _unload_sink
+
+    # parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(description="Pulse sink helper", formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument("-n", "--sink-name", help="Name of the sink to be created\n"
+                                                  "Default: " + _sink_name, default=_sink_name)
+    parser.add_argument("-m", "--mute-sink", help="Do not play audio of the new sink on your master sink",
+                        action="store_true",
+                        default=_mute_sink)
+    parser.add_argument("-u", "--unload-sink", help="Unload a sink by its id",
+                        default=_unload_sink)
+
+    args = parser.parse_args()
+
+    _sink_name = args.sink_name
+
+    _mute_sink = args.mute_sink
+
+    _unload_sink = args.unload_sink
+
+
+class Shell:
+    @staticmethod
+    def run(cmd):
+        # 'run()' waits until the process is done
+        if _print_shell_output:
+            return subprocess.run(cmd, stdin=None, shell=True, executable=_shell_executable, encoding=_shell_encoding)
+        else:
+            with open("/dev/null", "w") as devnull:
+                return subprocess.run(cmd, stdin=None, stdout=devnull, stderr=devnull, shell=True,
+                                      executable=_shell_executable, encoding=_shell_encoding)
+
+    @staticmethod
+    def Popen(cmd):
+        # 'Popen()' continues running in the background
+        if _print_shell_output:
+            return subprocess.Popen(cmd, stdin=None, shell=True, executable=_shell_executable, encoding=_shell_encoding)
+        else:
+            with open("/dev/null", "w") as devnull:
+                return subprocess.Popen(cmd, stdin=None, stdout=devnull, stderr=devnull, shell=True,
+                                        executable=_shell_executable, encoding=_shell_encoding)
+
+    @staticmethod
+    def check_output(cmd):
+        out = subprocess.check_output(cmd, shell=True, executable=_shell_executable, encoding=_shell_encoding)
+        # when not using 'encoding=' -> out.decode()
+        # but since it is set, decode() ist not needed anymore
+        #out = out.decode()
+        return out.rstrip('\n')
+
+
+class PulseAudio:
+    @staticmethod
+    def load_sink():
+        if _mute_sink:
+            sink_id = Shell.check_output(
+                'pactl load-module module-null-sink sink_name="' + _sink_name + '" sink_properties=device.description="' + _sink_name + '"')
+        else:
+            sink_id = Shell.check_output(
+                'pactl load-module module-remap-sink sink_name="' + _sink_name + '" sink_properties=device.description="' + _sink_name + '" remix=no')
+            # With advanced settings (master, rate, channels):
+            # pactl load-module module-remap-sink sink_name=spotrec sink_properties=device.description="spotrec" master=MASTER_SINK_NAME rate=44100 channels=2 remix=no
+
+        print("Loaded sink with\n"
+              f"id: {sink_id}\n"
+              f"name: {_sink_name}")
+
+    @staticmethod
+    def unload_sink(sink_id):
+        print(f"Unloading pulse sink {sink_id}")
+
+        Shell.run(f"pactl unload-module {sink_id}")
+
+
+if __name__ == "__main__":
+    main()
+    sys.exit(0)
