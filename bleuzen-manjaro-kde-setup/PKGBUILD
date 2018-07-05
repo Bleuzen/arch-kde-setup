@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.06.04
+pkgver=2018.07.05
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -23,6 +23,7 @@ depends=("pamac"
          "flac" "lame" "vorbis-tools" "opus-tools")
 optdepends=("powerpill"
             "pacserve"
+            "proaudio-meta"
             "chromium"
             "latte-dock"
             "gimp"
