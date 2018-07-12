@@ -26,6 +26,15 @@ post_install() {
         echo "$SWAPFILE none swap defaults 0 0" >> /etc/fstab
     fi
 
+    # makepkg: Utilizing multiple cores on compression
+    if [ ! -f "/etc/makepkg.conf.bak" ]; then
+        cp /etc/makepkg.conf /etc/makepkg.conf.bak
+        OLD_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z -)"
+        NEW_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z - --threads=0)"
+        sed -i "s/$OLD_COMPRESSXZ_LINE/$NEW_COMPRESSXZ_LINE/g" /etc/makepkg.conf
+        echo "makepkg now uses all cores to compress"
+    fi
+
     # Print TODO messages
     echo "TODO: add current user to vboxusers group if Virtual Box is installed"
     echo "TODO: remove users from storage group"
