@@ -1,13 +1,14 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.07.12
+pkgver=2018.07.13
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("pamac"
          "pamac-tray-appindicator"
+         "trizen"
          "bash"
          "python"
          "xdg-desktop-portal-gtk"
@@ -18,7 +19,6 @@ depends=("pamac"
          "wget"
          "frei0r-plugins"
          "xorg-xrandr"
-         "yaourt"
          "htop"
          "flac" "lame" "vorbis-tools" "opus-tools")
 optdepends=("powerpill"
@@ -50,7 +50,7 @@ optdepends=("powerpill"
             "lollypop"
             "kdenlive"
             "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver")
-conflicts=("octopi-notifier-frameworks")
+conflicts=("octopi-notifier-frameworks" "yaourt")
 install=$pkgname.install
 
 package() {
