@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.10.05
+pkgver=2018.11.03
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -30,27 +30,26 @@ optdepends=("powerpill"
             "audacity"
             "obs-studio"
             "redshift" "plasma5-applets-redshift-control"
-            "file-roller"
-            "gparted" "gnome-disk-utility"
-            "tk: git-cola gui fix"
+            "gnome-disk-utility"
             "gnome-calculator"
             "soundkonverter"
             "kid3"
             "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
             "keepassxc"
-            "adapta-gtk-theme" "adapta-kde" "kvantum-theme-adapta" "papirus-icon-theme"
+            "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
             "libva-vdpau-driver"
             "android-file-transfer"
             "wine" "wine-mono" "wine_gecko" "winetricks"
-            "pulseeffects"
             "youtube-dl"
             "telegram-desktop"
+            "lutris"
             "testdisk"
             "wireshark-qt"
             "lollypop"
             "kdenlive"
             "pulseeffects"
-            "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver")
+            "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver"
+            "dropbox")
 conflicts=("octopi-notifier-frameworks" "yaourt")
 install=$pkgname.install
 
