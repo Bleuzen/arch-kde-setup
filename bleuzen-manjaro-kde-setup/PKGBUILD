@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2018.11.03
-pkgrel=2
+pkgrel=3
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -42,7 +42,7 @@ optdepends=("powerpill"
             "wine" "wine-mono" "wine_gecko" "winetricks"
             "youtube-dl"
             "telegram-desktop"
-            "lutris" "lib32-gnutls" "lib32-libldap" "lib32-libgpg-error" "lib32-sqlite"
+            "lutris" "lib32-vulkan-icd-loader" "lib32-gnutls" "lib32-libldap" "lib32-libgpg-error" "lib32-sqlite"
             "testdisk"
             "wireshark-qt"
             "lollypop"
