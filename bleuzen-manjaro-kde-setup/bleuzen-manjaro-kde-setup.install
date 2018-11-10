@@ -26,13 +26,15 @@ post_install() {
         echo "$SWAPFILE none swap defaults 0 0" >> /etc/fstab
     fi
 
-    # makepkg: Utilizing multiple cores on compression
+    # makepkg: Utilizing all cpu cores
     if [ ! -f "/etc/makepkg.conf.bak" ]; then
         cp /etc/makepkg.conf /etc/makepkg.conf.bak
         OLD_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z -)"
         NEW_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z - --threads=0)"
         sed -i "s/$OLD_COMPRESSXZ_LINE/$NEW_COMPRESSXZ_LINE/g" /etc/makepkg.conf
-        echo "makepkg now uses all cores to compress"
+        OLD_MAKEFLAGS_LINE='#MAKEFLAGS="-j2"'
+        NEW_MAKEFLAGS_LINE='MAKEFLAGS="-j$(nproc)"'
+        sed -i "s/$OLD_MAKEFLAGS_LINE/$NEW_MAKEFLAGS_LINE/g" /etc/makepkg.conf 
     fi
 
     # Print TODO messages
