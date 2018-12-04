@@ -5,18 +5,20 @@ post_install() {
     # Enable Pacserve service
     if [ -f "/usr/bin/pacserve" ]; then
         systemctl enable pacserve.service
+        echo "[MKS] Enabled pacserve service"
     fi
 
     # Enable TeamViewer daemon
     if [ -d "/opt/teamviewer/" ]; then
         systemctl enable teamviewerd
+        echo "[MKS] Enabled TeamViewer daemon"
     fi
 
     # Create SWAP file
     SWAPFILE="/swapfile"
     if [ -f "$SWAPFILE" ]
     then
-        echo "Swap file already created, skipping ..."
+        echo "[MKS] Skipping swapfile"
     else
         echo "Creating swap file ..."
         fallocate -l 6G $SWAPFILE
@@ -24,6 +26,7 @@ post_install() {
         mkswap $SWAPFILE
         swapon $SWAPFILE
         echo "$SWAPFILE none swap defaults 0 0" >> /etc/fstab
+        echo "[MKS] Created swapfile"
     fi
 
     # makepkg: Utilizing all cpu cores
@@ -32,14 +35,18 @@ post_install() {
         OLD_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z -)"
         NEW_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z - --threads=0)"
         sed -i "s/$OLD_COMPRESSXZ_LINE/$NEW_COMPRESSXZ_LINE/g" /etc/makepkg.conf
-        OLD_MAKEFLAGS_LINE='#MAKEFLAGS="-j2"'
-        NEW_MAKEFLAGS_LINE='MAKEFLAGS="-j$(nproc)"'
-        sed -i "s/$OLD_MAKEFLAGS_LINE/$NEW_MAKEFLAGS_LINE/g" /etc/makepkg.conf 
+        echo "[MKS] Modified makepkg.conf to use all threads"
+    fi
+    
+    # Use all CPU cores for make
+    if [ ! -f "/etc/environment.bak" ]; then
+        cp /etc/environment /etc/environment.bak
+        echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/environment
+        echo "[MKS] Added MAKEFLAGS"
     fi
 
     # Print TODO messages
-    echo "TODO: add current user to vboxusers group if Virtual Box is installed"
-    echo "TODO: remove users from storage group"
+    echo "TODO: add current user to vboxusers group if VirtualBox is installed"
 }
 
 post_upgrade() {
