@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2018.12.04
+pkgver=2019.02.17
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -20,11 +20,12 @@ depends=("pamac"
          "frei0r-plugins"
          "xorg-xrandr"
          "htop"
-         "flac" "lame" "vorbis-tools" "opus-tools")
+         "flac" "lame" "vorbis-tools" "opus-tools"
+         "pavucontrol-qt"
+         "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme")
 optdepends=("powerpill"
             "pacserve"
             "proaudio-meta"
-            "pavucontrol-qt"
             "chromium"
             "latte-dock"
             "gimp"
@@ -33,14 +34,13 @@ optdepends=("powerpill"
             "redshift" "plasma5-applets-redshift-control"
             "gnome-disk-utility"
             "gnome-calculator"
-            "soundkonverter"
+            "ffaudioconverter"
             "kid3"
             "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
             "keepassxc"
-            "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
             "libva-vdpau-driver"
             "android-file-transfer"
-            "wine" "wine-mono" "wine_gecko" "winetricks"
+            "wine" "wine-mono" "wine_gecko" "winetricks" "vkd3d" "lib32-vkd3d"
             "youtube-dl"
             "telegram-desktop"
             "lutris" "lib32-vulkan-icd-loader" "lib32-gnutls" "lib32-libldap" "lib32-libgpg-error" "lib32-sqlite"
@@ -50,7 +50,7 @@ optdepends=("powerpill"
             "kdenlive"
             "pulseeffects"
             "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver"
-            "dropbox")
+            "kcm-wacomtablet")
 conflicts=("octopi-notifier-frameworks" "yaourt")
 install=$pkgname.install
 
