@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.02.17
+pkgver=2019.02.28
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -10,19 +10,20 @@ depends=("pamac"
          "pamac-tray-appindicator"
          "trizen"
          "bash"
+         "bash-completion"
          "python"
          "xdg-desktop-portal-gtk"
          "xdg-desktop-portal-kde"
          "flatpak"
          "rsync"
-         "bash-completion"
          "wget"
          "frei0r-plugins"
          "xorg-xrandr"
          "htop"
          "flac" "lame" "vorbis-tools" "opus-tools"
          "pavucontrol-qt"
-         "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme")
+         "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
+         "libreoffice-fresh")
 optdepends=("powerpill"
             "pacserve"
             "proaudio-meta"
