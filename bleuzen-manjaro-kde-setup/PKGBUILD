@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.02.28
+pkgver=2019.03.10
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
