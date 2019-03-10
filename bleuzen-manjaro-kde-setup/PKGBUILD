@@ -23,7 +23,8 @@ depends=("pamac"
          "flac" "lame" "vorbis-tools" "opus-tools"
          "pavucontrol-qt"
          "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
-         "libreoffice-fresh")
+         "libreoffice-fresh"
+         "vlc")
 optdepends=("powerpill"
             "pacserve"
             "proaudio-meta"
@@ -52,7 +53,9 @@ optdepends=("powerpill"
             "pulseeffects"
             "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver"
             "kcm-wacomtablet")
-conflicts=("octopi-notifier-frameworks" "yaourt")
+conflicts=("octopi-notifier-frameworks"
+           "yaourt"
+           "vlc-nightly")
 install=$pkgname.install
 
 package() {
