@@ -23,7 +23,7 @@ depends=("pamac"
          "flac" "lame" "vorbis-tools" "opus-tools"
          "pavucontrol-qt"
          "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
-         "libreoffice-fresh"
+         "libreoffice-still" "libreoffice-still-de" "hunspell" "hunspell-de"
          "vlc")
 optdepends=("powerpill"
             "pacserve"
