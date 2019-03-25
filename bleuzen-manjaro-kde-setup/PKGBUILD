@@ -1,14 +1,13 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.03.16
+pkgver=2019.03.25
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("pamac"
          "pamac-tray-appindicator"
-         "trizen"
          "bash"
          "bash-completion"
          "neofetch"
@@ -56,7 +55,7 @@ optdepends=("powerpill"
             "kcm-wacomtablet"
             "flameshot"
             "speedtest-cli")
-conflicts=("octopi-notifier-frameworks"
+conflicts=("octopi" "octopi-notifier-frameworks" "octopi-repoeditor" "alpm-octopi-utils"
            "yaourt"
            "vlc-nightly")
 install=$pkgname.install
