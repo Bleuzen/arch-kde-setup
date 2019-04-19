@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.03.25
+pkgver=2019.04.19
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -17,13 +17,12 @@ depends=("pamac"
          "flatpak"
          "rsync"
          "wget"
-         "frei0r-plugins"
          "xorg-xrandr"
          "htop"
          "flac" "lame" "vorbis-tools" "opus-tools"
          "pavucontrol-qt"
          "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
-         "libreoffice-still" "libreoffice-still-de" "hunspell" "hunspell-de"
+         "libreoffice-fresh" "libreoffice-fresh-de" "hunspell" "hunspell-de"
          "vlc")
 optdepends=("powerpill"
             "pacserve"
@@ -50,6 +49,7 @@ optdepends=("powerpill"
             "wireshark-qt"
             "lollypop"
             "kdenlive"
+            "shotcut"
             "pulseeffects"
             "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver"
             "kcm-wacomtablet"
@@ -57,7 +57,8 @@ optdepends=("powerpill"
             "speedtest-cli")
 conflicts=("octopi" "octopi-notifier-frameworks" "octopi-repoeditor" "alpm-octopi-utils"
            "yaourt"
-           "vlc-nightly")
+           "vlc-nightly"
+           "libreoffice-still" "libreoffice-still-de")
 install=$pkgname.install
 
 package() {
