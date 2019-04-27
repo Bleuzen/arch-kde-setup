@@ -5,28 +5,28 @@ post_install() {
     # Enable Pacserve service
     if [ -f "/usr/bin/pacserve" ]; then
         systemctl enable pacserve.service
-        echo "[MKS] Enabled pacserve service"
+        echo "[BMKS] Enabled pacserve service"
     fi
 
     # Enable TeamViewer daemon
     if [ -d "/opt/teamviewer/" ]; then
         systemctl enable teamviewerd
-        echo "[MKS] Enabled TeamViewer daemon"
+        echo "[BMKS] Enabled TeamViewer daemon"
     fi
 
     # Create SWAP file
     SWAPFILE="/swapfile"
     if [ -f "$SWAPFILE" ]
     then
-        echo "[MKS] Skipping swapfile"
+        echo "[BMKS] Skipping swapfile"
     else
         echo "Creating swap file ..."
-        fallocate -l 6G $SWAPFILE
+        fallocate -l 4G $SWAPFILE
         chmod 600 $SWAPFILE
         mkswap $SWAPFILE
         swapon $SWAPFILE
         echo "$SWAPFILE none swap defaults 0 0" >> /etc/fstab
-        echo "[MKS] Created swapfile"
+        echo "[BMKS] Created swapfile"
     fi
 
     # makepkg: Utilizing all cpu cores
@@ -35,14 +35,14 @@ post_install() {
         OLD_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z -)"
         NEW_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z - --threads=0)"
         sed -i "s/$OLD_COMPRESSXZ_LINE/$NEW_COMPRESSXZ_LINE/g" /etc/makepkg.conf
-        echo "[MKS] Modified makepkg.conf to use all threads"
+        echo "[BMKS] Modified makepkg.conf to use all threads"
     fi
     
     # Use all CPU cores for make
     if [ ! -f "/etc/environment.bak" ]; then
         cp /etc/environment /etc/environment.bak
         echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/environment
-        echo "[MKS] Added MAKEFLAGS"
+        echo "[BMKS] Added MAKEFLAGS"
     fi
 
     # Print TODO messages
