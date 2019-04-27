@@ -1,7 +1,28 @@
 #!/bin/bash
+# Check for root
+if [[ $EUID -ne 0 ]];
+then
+    echo "Cannot run as root user"
+    exit 1
+fi
 
+# Check for new version
+latestPKGBUILD=$(wget -O- -q https://raw.githubusercontent.com/Bleuzen/manjaro-kde-setup/master/bleuzen-manjaro-kde-setup/PKGBUILD)
+verLocal=$(pacman -Q bleuzen-manjaro-kde-setup | cut -d ' ' -f 2)
+verOnline=$(echo "$latestPKGBUILD" | grep 'pkgver' | cut -f 2 -d '=')-$(echo "$latestPKGBUILD" | grep 'pkgrel' | cut -f 2 -d '=') 
+echo "Local version: $verLocal"
+echo "Online version: $verOnline"
+newer=$(vercmp $verOnline $verLocal)
+if [ "$newer" -gt "0" ]
+then
+    echo "Update available"
+else
+    echo "No need to update"
+    exit 0
+fi
+
+# Install new version
 TMP_DIR=$(mktemp --directory)
-
 cd $TMP_DIR
 wget https://github.com/Bleuzen/manjaro-kde-setup/archive/master.tar.gz
 tar -xzvf master.tar.gz

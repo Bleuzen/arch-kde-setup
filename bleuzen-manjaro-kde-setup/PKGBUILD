@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2019.04.27
-pkgrel=1
+pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -15,7 +15,7 @@ depends=("pamac"
          "xdg-desktop-portal-kde"
          "flatpak"
          "rsync"
-         "wget"
+         "wget" # Needed for the updater of this package
          "xorg-xrandr"
          "htop"
          "flac" "lame" "vorbis-tools" "opus-tools"
@@ -23,7 +23,8 @@ depends=("pamac"
          "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
          "libreoffice-fresh" "libreoffice-fresh-de" "hunspell" "hunspell-de"
          "vlc"
-         "gnome-calculator")
+         "gnome-calculator" # Used in a shortcut
+         )
 optdepends=("pacserve"
             "proaudio-meta"
             "chromium"
@@ -48,11 +49,13 @@ optdepends=("pacserve"
             "pulseeffects"
             "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver"
             "kcm-wacomtablet"
-            "flameshot")
+            "flameshot"
+            )
 conflicts=("octopi" "octopi-notifier-frameworks" "octopi-repoeditor" "alpm-octopi-utils"
            "yaourt"
            "vlc-nightly"
-           "libreoffice-still" "libreoffice-still-de")
+           "libreoffice-still" "libreoffice-still-de"
+           )
 install=$pkgname.install
 
 package() {
