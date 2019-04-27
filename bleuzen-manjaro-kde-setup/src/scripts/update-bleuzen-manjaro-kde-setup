@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check for root
-if [[ $EUID -ne 0 ]];
+if [[ $EUID -eq 0 ]];
 then
     echo "Cannot run as root user"
     exit 1
