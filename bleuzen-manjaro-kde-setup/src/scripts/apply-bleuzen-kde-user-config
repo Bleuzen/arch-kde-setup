@@ -1,0 +1,2 @@
+#!/bin/bash
+\cp -f /usr/share/bleuzen-manjaro-kde-setup/* ~/.config/

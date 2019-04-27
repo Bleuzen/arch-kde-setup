@@ -62,6 +62,13 @@ package() {
   do
     install -m755 $file "$pkgdir/usr/bin/"
   done
+  
+  # Copy user config files
+  mkdir -p "$pkgdir/usr/share/bleuzen-manjaro-kde-setup"
+  for file in "$srcdir/config/*"
+  do
+    install -m444 $file "$pkgdir/usr/share/bleuzen-manjaro-kde-setup/"
+  done
 
   # Copy hotkeys
   mkdir -p "$pkgdir/usr/share/khotkeys/"
