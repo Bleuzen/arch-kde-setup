@@ -11,6 +11,11 @@ verLocal=$(pacman -Q bleuzen-manjaro-kde-setup | cut -d ' ' -f 2)
 verOnline=$(echo "$latestPKGBUILD" | grep 'pkgver' | cut -f 2 -d '=')-$(echo "$latestPKGBUILD" | grep 'pkgrel' | cut -f 2 -d '=') 
 echo "Local version: $verLocal"
 echo "Online version: $verOnline"
+if [ ! "${#verOnline}" -gt "1" ]
+then
+    echo "Failed to check for updates"
+    exit 1
+fi
 newer=$(vercmp $verOnline $verLocal)
 if [ "$newer" -gt "0" ]
 then
