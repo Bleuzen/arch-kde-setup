@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2019.04.30
-pkgrel=2
+pkgrel=3
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
