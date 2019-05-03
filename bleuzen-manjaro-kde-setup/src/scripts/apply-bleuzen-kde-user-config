@@ -1,5 +1,23 @@
 #!/bin/bash
-\cp -f /usr/share/bleuzen-manjaro-kde-setup/* ~/.config/
+
+kwriteconfig5 --file kcminputrc --group Keyboard --key NumLock --type int 0
+
+kwriteconfig5 --file klipperrc --group General --key KeepClipboardContents --type bool false
+
+kwriteconfig5 --file ksmserverrc --group General --key confirmLogout --type bool false
+kwriteconfig5 --file ksmserverrc --group General --key loginMode --type string default
+kwriteconfig5 --file ksmserverrc --group General --key offerShutdown --type bool true
+kwriteconfig5 --file ksmserverrc --group General --key shutdownType --type int 0
+
+kwriteconfig5 --file ksmserverrc --group General --key shutdownType --type int 0
+
+kwriteconfig5 --file kwinrc --group MouseBindings --key CommandAllKey --type string Meta
+kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key BorderSize --type string None
+kwriteconfig5 --file kwinrc --group Plugins --key CommandAllKey --type string Meta
+kwriteconfig5 --file kwinrc --group Plugins --key blurEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key sheetEnabled --type bool true
+
 
 # To apply changes, the user has to re-login -> Do logout
 # Logout with confirmation:

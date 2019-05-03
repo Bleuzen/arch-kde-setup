@@ -1,8 +1,8 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.04.30
-pkgrel=3
+pkgver=2019.05.03
+pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -10,6 +10,7 @@ depends=("pamac"
          "pamac-tray-appindicator"
          "bash"
          "bash-completion"
+         "kconfig" # used for apply-bleuzen-kde-user-config script
          "neofetch"
          "python"
          "xdg-desktop-portal-kde"
