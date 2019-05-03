@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2019.05.03
-pkgrel=1
+pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -64,13 +64,6 @@ package() {
   for file in "$srcdir/scripts/*"
   do
     install -m755 $file "$pkgdir/usr/bin/"
-  done
-  
-  # Copy user config files
-  mkdir -p "$pkgdir/usr/share/bleuzen-manjaro-kde-setup"
-  for file in "$srcdir/config/*"
-  do
-    install -m444 $file "$pkgdir/usr/share/bleuzen-manjaro-kde-setup/"
   done
 
   # Copy hotkeys
