@@ -3,10 +3,11 @@ post_install() {
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
     # Enable Pacserve service
-    if [ -f "/usr/bin/pacserve" ]; then
-        systemctl enable pacserve.service
-        echo "[BMKS] Enabled pacserve service"
-    fi
+#    if [ -f "/usr/bin/pacredir" ]; then
+#        systemctl enable pacserve.service
+#        systemctl enable pacredir.service
+#        echo "[BMKS] Enabled pacredir service"
+#    fi
 
     # Enable TeamViewer daemon
     if [ -d "/opt/teamviewer/" ]; then
