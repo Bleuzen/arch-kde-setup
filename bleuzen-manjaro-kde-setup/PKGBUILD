@@ -1,31 +1,31 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.05.03
-pkgrel=2
+pkgver=2019.05.24
+pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("pamac"
          "pamac-tray-appindicator"
-         "bash"
-         "bash-completion"
+         "bash" "bash-completion"
+         "zsh" "manjaro-zsh-config"
          "kconfig" # used for apply-bleuzen-kde-user-config script
          "neofetch"
          "python"
          "xdg-desktop-portal-kde"
          "flatpak"
-         "rsync"
          "xorg-xrandr"
          "htop"
          "flac" "lame" "vorbis-tools" "opus-tools"
          "pavucontrol-qt"
+         "breeze" "breeze-gtk" "breeze-icons"
          "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
          "libreoffice-fresh" "libreoffice-fresh-de" "hunspell" "hunspell-de"
          "vlc"
          "gnome-calculator" # Used in a shortcut
          )
-optdepends=("pacserve"
+optdepends=("pacredir"
             "proaudio-meta"
             "chromium"
             "latte-dock"
@@ -44,6 +44,7 @@ optdepends=("pacserve"
             "lutris" "lib32-vulkan-icd-loader" "lib32-gnutls" "lib32-libldap" "lib32-libgpg-error" "lib32-sqlite"
             "testdisk"
             "lollypop"
+            "elisa"
             "kdenlive"
             "shotcut"
             "pulseeffects"
