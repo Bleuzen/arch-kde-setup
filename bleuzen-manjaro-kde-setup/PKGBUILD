@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2019.05.30
-pkgrel=1
+pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -17,6 +17,7 @@ depends=("pamac"
          "kconfig" # used for apply-bleuzen-kde-user-config script
          "python"
          "xdg-desktop-portal-kde"
+         "plasma-browser-integration"
          "flatpak"
          "xorg-xrandr"
          "redshift" "plasma5-applets-redshift-control" # Reduce blue light on X11
