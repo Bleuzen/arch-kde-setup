@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.05.24
+pkgver=2019.05.30
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -10,21 +10,23 @@ depends=("pamac"
          "pamac-tray-appindicator"
          "bash" "bash-completion"
          "zsh" "manjaro-zsh-config"
-         "kconfig" # used for apply-bleuzen-kde-user-config script
+         "iotop" # Disk activity monitor
+         "nethogs" # Network monitor
+         "htop" # Process monitor
          "neofetch"
+         "kconfig" # used for apply-bleuzen-kde-user-config script
          "python"
          "xdg-desktop-portal-kde"
          "flatpak"
          "xorg-xrandr"
-         "htop"
+         "redshift" "plasma5-applets-redshift-control" # Reduce blue light on X11
          "flac" "lame" "vorbis-tools" "opus-tools"
          "pavucontrol-qt"
          "breeze" "breeze-gtk" "breeze-icons"
          "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme"
          "libreoffice-fresh" "libreoffice-fresh-de" "hunspell" "hunspell-de"
-         "vlc"
          "gnome-calculator" # Used in a shortcut
-         )
+         "vlc")
 optdepends=("pacredir"
             "proaudio-meta"
             "chromium"
@@ -32,7 +34,6 @@ optdepends=("pacredir"
             "gimp"
             "audacity"
             "obs-studio"
-            "redshift" "plasma5-applets-redshift-control"
             "gnome-disk-utility"
             "ffaudioconverter"
             "kid3"
@@ -50,13 +51,9 @@ optdepends=("pacredir"
             "pulseeffects"
             "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver"
             "kcm-wacomtablet"
-            "flameshot"
-            )
+            "flameshot")
 conflicts=("octopi" "octopi-notifier-frameworks" "octopi-repoeditor" "alpm-octopi-utils"
-           "yaourt"
-           "vlc-nightly"
-           "libreoffice-still" "libreoffice-still-de"
-           )
+           "yaourt")
 install=$pkgname.install
 
 package() {
