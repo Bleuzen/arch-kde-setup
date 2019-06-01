@@ -1,13 +1,14 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.05.30
-pkgrel=2
+pkgver=2019.06.01
+pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("pamac"
          "pamac-tray-appindicator"
+         "yay"
          "bash" "bash-completion"
          "zsh" "manjaro-zsh-config"
          "iotop" # Disk activity monitor
