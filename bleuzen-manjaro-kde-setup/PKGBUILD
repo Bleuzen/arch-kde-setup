@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.06.01
+pkgver=2019.06.03
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -55,7 +55,8 @@ optdepends=("pacredir"
             "kcm-wacomtablet"
             "flameshot")
 conflicts=("octopi" "octopi-notifier-frameworks" "octopi-repoeditor" "alpm-octopi-utils"
-           "yaourt")
+           "yaourt"
+           "appimagelauncher")
 install=$pkgname.install
 
 package() {
