@@ -27,8 +27,8 @@ echo "[Dolphin]
 GroupedSorting=true
 SortOrder=1
 SortRole=modificationtime
-Version=4
-" > ~/Downloads/.directory
+Timestamp=2019,6,13,18,20,57
+Version=4" > ~/Downloads/.directory
 
 
 # To apply changes, the user has to re-login -> Do logout
