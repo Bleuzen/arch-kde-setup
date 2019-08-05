@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2019.08.05
-pkgrel=4
+pkgrel=5
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -52,6 +52,7 @@ optdepends=("pacredir"
             "kcm-wacomtablet"
             "flameshot"
             "kompare"
+            "kgpg"
             "teamviewer")
 conflicts=("octopi" "octopi-notifier-frameworks" "octopi-repoeditor" "alpm-octopi-utils" "octopi-cachecleaner" "octopi-pacmanhelper"
            "yaourt"
