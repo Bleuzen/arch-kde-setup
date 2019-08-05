@@ -1,0 +1,34 @@
+remove_repo() {
+    # Remove repo
+    sed -n '1h;1!H;${g;s/###REPO bleuzen###\n.*###END REPO bleuzen###//;p;}' -i /etc/pacman.conf
+    # Delete all trailing blank lines at end of file
+    sed -e :a -e '/^\n*$/{$d;N;};/\n$/ba' -i /etc/pacman.conf
+}
+
+
+add_repo() {
+cat >> /etc/pacman.conf <<-EOF
+
+###REPO bleuzen###
+[bleuzen]
+SigLevel = PackageRequired
+Server = https://bleuzen.de/repo/manjaro/\$repo/\$arch
+###END REPO bleuzen###
+EOF
+}
+
+
+post_upgrade() {
+    remove_repo
+    add_repo
+}
+
+
+post_install() {
+    post_upgrade
+}
+
+
+post_remove() {
+    remove_repo
+}

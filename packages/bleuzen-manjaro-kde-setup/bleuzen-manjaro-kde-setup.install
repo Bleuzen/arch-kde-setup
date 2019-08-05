@@ -9,7 +9,7 @@ post_install() {
 #        echo "[BMKS] Enabled pacredir service"
 #    fi
 
-    # Enable TeamViewer daemon
+    # Enable TeamViewer daemon if it is installed
     if [ -d "/opt/teamviewer/" ]; then
         systemctl enable teamviewerd
         echo "[BMKS] Enabled TeamViewer daemon"
@@ -46,8 +46,8 @@ post_install() {
         echo "[BMKS] Added MAKEFLAGS"
     fi
 
-    # Print TODO messages
-    echo "TODO: add current user to vboxusers group if VirtualBox is installed"
+    # Print INFO messages
+    #echo "INFO: Add current user to vboxusers group if VirtualBox is installed"
 }
 
 post_upgrade() {

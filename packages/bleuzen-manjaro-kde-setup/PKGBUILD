@@ -1,16 +1,16 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2019.06.13
-pkgrel=2
+pkgver=2019.08.05
+pkgrel=4
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
-depends=("pamac"
-         "pamac-tray-appindicator"
+depends=("bleuzen-keyring" "bleuzen-repo"
+         "pamac" "pamac-tray-appindicator"
          "yay"
          "bash" "bash-completion"
-         "zsh" "manjaro-zsh-config"
+         "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
          "iotop" # Disk activity monitor
          "nethogs" # Network monitor
          "htop" # Process monitor
@@ -39,12 +39,9 @@ optdepends=("pacredir"
             "gnome-disk-utility"
             "ffaudioconverter"
             "kid3"
-            "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
             "keepassxc"
-            "wine" "wine-mono" "wine_gecko" "winetricks" "vkd3d" "lib32-vkd3d"
             "youtube-dl"
             "telegram-desktop"
-            "lutris" "lib32-vulkan-icd-loader" "lib32-gnutls" "lib32-libldap" "lib32-libgpg-error" "lib32-sqlite"
             "testdisk"
             "lollypop"
             "elisa"
@@ -54,7 +51,8 @@ optdepends=("pacredir"
             "gstreamer-vaapi" "libvdpau-va-gl" "libva" "libva-vdpau-driver" "libva-intel-driver" "libva-mesa-driver"
             "kcm-wacomtablet"
             "flameshot"
-            "kompare")
+            "kompare"
+            "teamviewer")
 conflicts=("octopi" "octopi-notifier-frameworks" "octopi-repoeditor" "alpm-octopi-utils" "octopi-cachecleaner" "octopi-pacmanhelper"
            "yaourt"
            "appimagelauncher")
