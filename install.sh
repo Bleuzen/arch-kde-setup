@@ -101,7 +101,7 @@ cat >> $PACMAN_CONFIG <<-EOF
 [bleuzen]
 SigLevel = PackageRequired
 Server = https://bleuzen.de/repo/manjaro/\$repo/\$arch
-Server = https://bleuzen-manjaro-repo.000webhostapp.com/repo/manjaro/\$repo/\$arch
+Server = https://ip199.ip-54-36-232.eu/repo/manjaro/\$repo/\$arch
 ###END REPO bleuzen###
 EOF
 }

@@ -1,6 +1,6 @@
 pkgname=bleuzen-repo
 pkgver=20190806
-pkgrel=1
+pkgrel=2
 pkgdesc='Bleuzen pacman repo'
 arch=('any')
 url='https://github.com/Bleuzen/manjaro-kde-setup'
