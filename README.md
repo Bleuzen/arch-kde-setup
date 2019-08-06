@@ -4,5 +4,5 @@ My Manjaro KDE setup
 #### Install
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bleuzen/manjaro-kde-setup/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bleuzen/manjaro-kde-setup/master/curl-installer.sh)"
 ```

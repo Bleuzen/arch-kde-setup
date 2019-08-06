@@ -46,8 +46,9 @@ post_install() {
         echo "[BMKS] Added MAKEFLAGS"
     fi
 
-    # Print INFO messages
-    #echo "INFO: Add current user to vboxusers group if VirtualBox is installed"
+    # Print hints
+    echo "Hint: Add your user to 'vboxusers' group if you use VirtualBox"
+    echo "Hint: Run 'apply-bleuzen-user-config' to copy some if my cool settings"
 }
 
 post_upgrade() {

@@ -1,14 +1,16 @@
 pkgname=bleuzen-keyring
-pkgver=20190805
+pkgver=20190806
 pkgrel=1
 pkgdesc='Bleuzen PGP keyring'
 arch=('any')
 url='https://github.com/Bleuzen/manjaro-kde-setup'
 install="${pkgname}.install"
 source=('Makefile'
-        'bleuzen.gpg')
-sha256sums=('ed8b4a9cb19d5b52396cd765efc4d774ac59fbdd6ca5e7991e4052fdfd73f91b'
-            '06a598d74ed686002b45bd72616aa9ed87f09c5be76861f5efeb30976043410d')
+        'bleuzen.gpg'
+        'bleuzen-trusted')
+sha256sums=('bcb3ab43b110cb6263cbddce4dabed49b68655875e5e52c845bc7df815c4b33a'
+            '06a598d74ed686002b45bd72616aa9ed87f09c5be76861f5efeb30976043410d'
+            '036a04ac716fb6d13dd781b2ee55ef23320032c05f1506d0fed36e174e359518')
 
 package() {
 	cd "${srcdir}"

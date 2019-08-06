@@ -1,8 +1,61 @@
 #!/bin/bash
+if [[ $EUID -eq 0 ]];
+then
+    echo "Do not run this as root"
+    exit
+fi
+
+# Packages for this required to work:
+# - plasma-desktop (lookandfeeltool)
+# - kconfig (kwriteconfig5)
+
+
+WITH_THEMING=0
+
+if [ "$1" = "--with-theming" ]; then
+    WITH_THEMING=1
+    echo "Theming will be changed. This may be buggy and does not change all settings needed. Good luck!"
+fi
+
 
 echo "To apply the changes, you will be logged out. Save all of your work now!"
 read -p "Press enter to continue..."
 
+
+### SHELL ###
+
+echo "Making zsh your default shell..."
+chsh -s $(which zsh)
+
+if [ -f "/home/$USER/.local/share/konsole/Shell.profile" ]; then
+    kwriteconfig5 --file "/home/$USER/.local/share/konsole/Shell.profile" --group General --key Command --type string /bin/zsh
+fi
+
+
+### Dolphin ###
+
+echo "[Dolphin]
+GroupedSorting=true
+SortOrder=1
+SortRole=modificationtime
+Timestamp=2019,6,13,18,20,57
+Version=4" > ~/Downloads/.directory
+
+
+### Theming ###
+
+if [[ "$WITH_THEMING" == 1 ]]; then
+    lookandfeeltool -a org.kde.breezedark.desktop
+
+    if [ -f "/home/$USER/.config/gtk-3.0/settings.ini" ]; then
+        kwriteconfig5 --file "/home/$USER/.config/gtk-3.0/settings.ini" --group Settings --key gtk-fallback-icon-theme --type string Adwaita
+        kwriteconfig5 --file "/home/$USER/.config/gtk-3.0/settings.ini" --group Settings --key gtk-icon-theme-name --type string breeze-dark
+        kwriteconfig5 --file "/home/$USER/.config/gtk-3.0/settings.ini" --group Settings --key gtk-theme-name --type string Breeze-Dark
+    fi
+fi
+
+
+### KDE misc ###
 
 kwriteconfig5 --file kcminputrc --group Keyboard --key NumLock --type int 0
 
@@ -22,13 +75,6 @@ kwriteconfig5 --file kwinrc --group Plugins --key blurEnabled --type bool true
 kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled --type bool true
 kwriteconfig5 --file kwinrc --group Plugins --key sheetEnabled --type bool true
 
-
-echo "[Dolphin]
-GroupedSorting=true
-SortOrder=1
-SortRole=modificationtime
-Timestamp=2019,6,13,18,20,57
-Version=4" > ~/Downloads/.directory
 
 
 # To apply changes, the user has to re-login -> Do logout

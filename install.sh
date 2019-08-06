@@ -6,6 +6,7 @@ fi
 
 
 PACMAN_CONFIG="/etc/pacman.conf"
+PACKAGES_TO_REMOVE="octopi octopi-notifier-frameworks octopi-repoeditor alpm-octopi-utils octopi-cachecleaner octopi-pacmanhelper yaourt appimagelauncher" # Same as in: packages/bleuzen-manjaro-kde-setup/PKGBUILD conflicts=...
 
 
 remove_repo() {
@@ -88,7 +89,8 @@ xEtOkZXrpc09mB+2TYAi9PyE0HtV/V6Ga5zrPQM5v/UAmZPkcwSSwluaKSXyjg==
 -----END PGP PUBLIC KEY BLOCK-----
 KEY
 
-pacman-key --recv-key 569B2F713B43893D63EF67ED37A897239F434732
+# https://wiki.archlinux.org/index.php/Pacman/Package_signing#Adding_unofficial_keys
+# Sign the imported key
 pacman-key --lsign-key 569B2F713B43893D63EF67ED37A897239F434732
 
 # Edit pacman config
@@ -99,6 +101,7 @@ cat >> $PACMAN_CONFIG <<-EOF
 [bleuzen]
 SigLevel = PackageRequired
 Server = https://bleuzen.de/repo/manjaro/\$repo/\$arch
+Server = https://bleuzen-manjaro-repo.000webhostapp.com/repo/manjaro/\$repo/\$arch
 ###END REPO bleuzen###
 EOF
 }
@@ -111,9 +114,15 @@ if [ "$1" = "--remove" ]; then
     pacman -Syy
 else
     echo "Installing..."
+
+    # Remove packages I don't like
+    pacman -D --asdeps $PACKAGES_TO_REMOVE &>/dev/null
+    pacman -Rns --noconfirm $(pacman -Qqtd)
+
+    # Install the repo and basic setup packages
     add_repo
     pacman -Syy
-    pacman -S bleuzen-keyring bleuzen-repo bleuzen-manjaro-kde-setup
+    pacman -S --noconfirm bleuzen-keyring bleuzen-repo bleuzen-manjaro-kde-setup
 fi
 
 
