@@ -70,10 +70,15 @@ kwriteconfig5 --file ksmserverrc --group General --key shutdownType --type int 0
 
 kwriteconfig5 --file kwinrc --group MouseBindings --key CommandAllKey --type string Meta
 kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key BorderSize --type string None
+kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft --type string N
+kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight --type string FIAX
 kwriteconfig5 --file kwinrc --group Plugins --key CommandAllKey --type string Meta
 kwriteconfig5 --file kwinrc --group Plugins --key blurEnabled --type bool true
 kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled --type bool true
 kwriteconfig5 --file kwinrc --group Plugins --key sheetEnabled --type bool true
+
+kwriteconfig5 --file breezerc --group Windeco --key DrawTitleBarSeparator --type bool false
+kwriteconfig5 --file breezerc --group Windeco --key TitleAlignment --type string AlignLeft
 
 
 
