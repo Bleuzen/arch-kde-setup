@@ -1,5 +1,5 @@
 pkgname=bleuzen-repo
-pkgver=20190806
+pkgver=2019.08.06
 pkgrel=2
 pkgdesc='Bleuzen pacman repo'
 arch=('any')

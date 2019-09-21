@@ -1,5 +1,5 @@
 pkgname=bleuzen-keyring
-pkgver=20190806
+pkgver=2019.08.06
 pkgrel=1
 pkgdesc='Bleuzen PGP keyring'
 arch=('any')
