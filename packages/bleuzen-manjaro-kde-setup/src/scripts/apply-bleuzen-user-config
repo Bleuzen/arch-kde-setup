@@ -31,6 +31,9 @@ if [ -f "/home/$USER/.local/share/konsole/Shell.profile" ]; then
     kwriteconfig5 --file "/home/$USER/.local/share/konsole/Shell.profile" --group General --key Command --type string /bin/zsh
 fi
 
+cp /etc/skel/.zshrc /home/$USER/
+#yes | cp /etc/skel/.zshrc /home/$USER/
+
 
 ### Dolphin ###
 
@@ -68,6 +71,7 @@ kwriteconfig5 --file ksmserverrc --group General --key shutdownType --type int 0
 
 kwriteconfig5 --file ksmserverrc --group General --key shutdownType --type int 0
 
+kwriteconfig5 --file kwinrc --group NightColor --key Active --type bool true
 kwriteconfig5 --file kwinrc --group MouseBindings --key CommandAllKey --type string Meta
 kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key BorderSize --type string None
 kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft --type string N
