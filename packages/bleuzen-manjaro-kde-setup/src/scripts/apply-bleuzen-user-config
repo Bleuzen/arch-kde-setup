@@ -11,10 +11,16 @@ fi
 
 
 WITH_THEMING=0
+CHANGE_SHELL=0
 
 if [ "$1" = "--with-theming" ]; then
     WITH_THEMING=1
     echo "Theming will be changed. This may be buggy and does not change all settings needed. Good luck!"
+fi
+
+if [[ "$SHELL" != *"zsh" ]];then
+    CHANGE_SHELL=1
+    echo "Shell will be changed. You may have to enter your password."
 fi
 
 
@@ -24,15 +30,17 @@ read -p "Press enter to continue..."
 
 ### SHELL ###
 
-echo "Making zsh your default shell..."
-chsh -s $(which zsh)
+if [[ "$CHANGE_SHELL" == 1 ]]; then
+    echo "Making zsh your default shell..."
+    chsh -s $(which zsh)
 
-if [ -f "/home/$USER/.local/share/konsole/Shell.profile" ]; then
-    kwriteconfig5 --file "/home/$USER/.local/share/konsole/Shell.profile" --group General --key Command --type string /bin/zsh
+    if [ -f "/home/$USER/.local/share/konsole/Shell.profile" ]; then
+        kwriteconfig5 --file "/home/$USER/.local/share/konsole/Shell.profile" --group General --key Command --type string /bin/zsh
+    fi
+
+    cp /etc/skel/.zshrc /home/$USER/
+    #yes | cp /etc/skel/.zshrc /home/$USER/ # Overwrite zsh config if it exists
 fi
-
-cp /etc/skel/.zshrc /home/$USER/
-#yes | cp /etc/skel/.zshrc /home/$USER/
 
 
 ### Dolphin ###
@@ -49,12 +57,38 @@ Version=4" > ~/Downloads/.directory
 
 if [[ "$WITH_THEMING" == 1 ]]; then
     lookandfeeltool -a org.kde.breezedark.desktop
+    
+    kwriteconfig5 --file kdeglobals --group General --key ColorScheme --type string BreezeDark
+    kwriteconfig5 --file kdeglobals --group KDE --key LookAndFeelPackage --type string org.kde.breezedark.desktop
+    kwriteconfig5 --file kdeglobals --group KDE --key widgetStyle --type string Breeze
+    kwriteconfig5 --file kdeglobals --group Icons --key Theme --type string breeze-dark
 
     if [ -f "/home/$USER/.config/gtk-3.0/settings.ini" ]; then
         kwriteconfig5 --file "/home/$USER/.config/gtk-3.0/settings.ini" --group Settings --key gtk-fallback-icon-theme --type string Adwaita
         kwriteconfig5 --file "/home/$USER/.config/gtk-3.0/settings.ini" --group Settings --key gtk-icon-theme-name --type string breeze-dark
         kwriteconfig5 --file "/home/$USER/.config/gtk-3.0/settings.ini" --group Settings --key gtk-theme-name --type string Breeze-Dark
     fi
+    
+    cat << EOF > ~/.gtkrc-2.0
+include "/usr/share/themes/Breeze-Dark/gtk-2.0/gtkrc"
+style "user-font" 
+{
+	font_name="Noto Sans Regular"
+}
+widget_class "*" style "user-font"
+gtk-font-name="Noto Sans Regular 10"
+gtk-theme-name="Breeze-Dark"
+gtk-icon-theme-name="breeze-dark"
+gtk-fallback-icon-theme="Adwaita"
+gtk-cursor-theme-name="breeze_cursors"
+gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
+gtk-menu-images=1
+gtk-button-images=1
+gtk-primary-button-warps-slider=0
+gtk-modules=appmenu-gtk-module
+EOF
+
+    kwriteconfig5 --file katerc --group "KTextEditor Renderer" --key Schema --type string "Breeze Dark"
 fi
 
 
@@ -74,7 +108,7 @@ kwriteconfig5 --file ksmserverrc --group General --key shutdownType --type int 0
 kwriteconfig5 --file kwinrc --group NightColor --key Active --type bool true
 kwriteconfig5 --file kwinrc --group MouseBindings --key CommandAllKey --type string Meta
 kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key BorderSize --type string None
-kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft --type string N
+kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft --type string M
 kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight --type string FIAX
 kwriteconfig5 --file kwinrc --group Plugins --key CommandAllKey --type string Meta
 kwriteconfig5 --file kwinrc --group Plugins --key blurEnabled --type bool true
