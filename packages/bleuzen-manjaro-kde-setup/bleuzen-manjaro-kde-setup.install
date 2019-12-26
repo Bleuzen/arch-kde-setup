@@ -10,10 +10,10 @@ post_install() {
 #    fi
 
     # Enable TeamViewer daemon if it is installed
-    if [ -d "/opt/teamviewer/" ]; then
-        systemctl enable teamviewerd
-        echo "[BMKS] Enabled TeamViewer daemon"
-    fi
+#    if [ -d "/opt/teamviewer/" ]; then
+#        systemctl enable teamviewerd
+#        echo "[BMKS] Enabled TeamViewer daemon"
+#    fi
 
     # Create SWAP file
     SWAPFILE="/swapfile"
