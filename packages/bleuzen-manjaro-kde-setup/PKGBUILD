@@ -1,14 +1,13 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2020.01.16
+pkgver=2020.01.17
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("bleuzen-keyring" "bleuzen-repo"
          "pamac" "pamac-tray-appindicator"
-         "kernel-alive"
          "yay"
          "bash" "bash-completion"
          "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config"
