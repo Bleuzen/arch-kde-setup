@@ -1,8 +1,22 @@
-post_install() {
-    # Add the Flathub repository
-    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+_is_package_installed() {
+    package="$1";
+    check="$(LC_ALL=C pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")";
+    if [ -n "${check}" ] ; then
+        echo 0; #'0' means 'true' in Bash
+        return; #true
+    fi;
+    echo 1; #'1' means 'false' in Bash
+    return; #false
+}
 
-    # Enable Pacserve service
+
+post_install() {
+    # Add the Flathub repository (if flatpak is installed)
+    if [ -f "/usr/bin/flatpak" ]; then
+        /usr/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    fi
+
+    # Enable pacredir service // TODO: also add pacredir entries in /etc/pacman.conf
 #    if [ -f "/usr/bin/pacredir" ]; then
 #        systemctl enable pacserve.service
 #        systemctl enable pacredir.service
@@ -10,6 +24,7 @@ post_install() {
 #    fi
 
     # Enable TeamViewer daemon if it is installed
+    # currently commented out because teamviewer daemon increases boot time and I only rarely need it
 #    if [ -d "/opt/teamviewer/" ]; then
 #        systemctl enable teamviewerd
 #        echo "[BMKS] Enabled TeamViewer daemon"
@@ -31,6 +46,7 @@ post_install() {
     fi
 
     # makepkg: Utilizing all cpu cores
+    # TODO: use zst instead of xz
     if [ ! -f "/etc/makepkg.conf.bak" ]; then
         cp /etc/makepkg.conf /etc/makepkg.conf.bak
         OLD_COMPRESSXZ_LINE="COMPRESSXZ=(xz -c -z -)"
@@ -38,8 +54,8 @@ post_install() {
         sed -i "s/$OLD_COMPRESSXZ_LINE/$NEW_COMPRESSXZ_LINE/g" /etc/makepkg.conf
         echo "[BMKS] Modified makepkg.conf to use all threads"
     fi
-    
-    # Use all CPU cores for make
+
+    # Use all CPU cores by default for make
     if [ ! -f "/etc/environment.bak" ]; then
         cp /etc/environment /etc/environment.bak
         echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/environment
@@ -48,9 +64,25 @@ post_install() {
 
     # Print hints
     echo "Hint: Add your user to 'vboxusers' group if you use VirtualBox"
-    echo "Hint: Run 'apply-bleuzen-user-config' to copy some if my cool settings"
+    echo "Hint: Run 'apply-bleuzen-user-config' to copy some if my cool user settings"
 }
+
 
 post_upgrade() {
     post_install
+
+    new_version="$1"
+    old_version="$2"
+
+    # Switch from libreoffice-fresh to libreoffice-still if old version was not newer than "2020.01.17-1"
+    if [[ $(vercmp "2020.01.17-1" $old_version) -ge 0 ]]; then
+        if [[ $(_is_package_installed "libreoffice-fresh") == 0 ]]; then
+            echo "[BMKS] Switching to LibreOffice still"
+            rm /var/lib/pacman/db.lck
+            pacman -R --noconfirm libreoffice-fresh-de
+            pacman -R --noconfirm libreoffice-fresh
+            pacman -S --noconfirm libreoffice-still libreoffice-still-de
+            touch /var/lib/pacman/db.lck
+        fi
+    fi
 }

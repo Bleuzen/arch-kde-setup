@@ -106,7 +106,7 @@ EOF
 }
 
 
-if [ "$1" = "--remove" ]; then
+if [ "$1" == "--remove" ]; then
     echo "Removing..."
     pacman -R bleuzen-keyring bleuzen-repo bleuzen-manjaro-kde-setup
     remove_repo
@@ -122,6 +122,13 @@ else
     add_repo
     pacman -Syy
     pacman -S --noconfirm bleuzen-keyring bleuzen-repo bleuzen-manjaro-kde-setup
+    
+    # Install LibreOffice
+    if [ "$1" == "--no-office" ]; then
+        echo "Skipping installation of LibreOffice"
+    else
+        pacman -S --noconfirm libreoffice-still libreoffice-still-de
+    fi
 fi
 
 
