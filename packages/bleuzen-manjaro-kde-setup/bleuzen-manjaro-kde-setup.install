@@ -75,14 +75,14 @@ post_upgrade() {
     old_version="$2"
 
     # Switch from libreoffice-fresh to libreoffice-still if old version was not newer than "2020.01.17-1"
-    if [[ $(vercmp "2020.01.17-1" $old_version) -ge 0 ]]; then
-        if [[ $(_is_package_installed "libreoffice-fresh") == 0 ]]; then
-            echo "[BMKS] Switching to LibreOffice still"
-            rm /var/lib/pacman/db.lck
-            pacman -R --noconfirm libreoffice-fresh-de
-            pacman -R --noconfirm libreoffice-fresh
-            pacman -S --noconfirm libreoffice-still libreoffice-still-de
-            touch /var/lib/pacman/db.lck
-        fi
-    fi
+#    if [[ $(vercmp "2020.01.17-1" $old_version) -ge 0 ]]; then
+#        if [[ $(_is_package_installed "libreoffice-fresh") == 0 ]]; then
+#            echo "[BMKS] Switching to LibreOffice still"
+#            rm /var/lib/pacman/db.lck
+#            pacman -R --noconfirm libreoffice-fresh-de
+#            pacman -R --noconfirm libreoffice-fresh
+#            pacman -S --noconfirm libreoffice-still libreoffice-still-de
+#            touch /var/lib/pacman/db.lck
+#        fi
+#    fi
 }
