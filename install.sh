@@ -6,10 +6,13 @@ fi
 
 
 PACMAN_CONFIG="/etc/pacman.conf"
-PACKAGES_TO_REMOVE="octopi octopi-notifier-frameworks octopi-repoeditor alpm-octopi-utils octopi-cachecleaner octopi-pacmanhelper yaourt appimagelauncher" # Same as in: packages/bleuzen-manjaro-kde-setup/PKGBUILD conflicts=...
+PACKAGES_TO_REMOVE="octopi octopi-notifier-frameworks octopi-repoeditor alpm-octopi-utils octopi-cachecleaner octopi-pacmanhelper yaourt appimagelauncher bauh snapd snapd-glib pamac-snap-plugin"
+PACKAGES_TO_HARD_REMOVE="snapd"
 
 
 remove_repo() {
+    echo "[BMKS] Removing repo..."
+
     # Remove signing key
     pacman-key --delete 569B2F713B43893D63EF67ED37A897239F434732
 
@@ -21,6 +24,8 @@ remove_repo() {
 
 
 add_repo() {
+echo "[BMKS] Adding repo..."
+
 # Add public key used for signing
 # Updates for this are handled by the package 'bleuzen-keyring'
 pacman-key --add - <<KEY
@@ -106,17 +111,28 @@ EOF
 }
 
 
+remove_crap() {
+    echo "[BMKS] Removing crap packages..."
+    
+    for package in $PACKAGES_TO_HARD_REMOVE; do
+        pacman -R --noconfirm $package
+    done
+    
+    pacman -D --asdeps $PACKAGES_TO_REMOVE &>/dev/null
+    pacman -Rns --noconfirm $(pacman -Qqtd)
+}
+
+
 if [ "$1" == "--remove" ]; then
-    echo "Removing..."
+    echo "[BMKS] Removing..."
     pacman -R bleuzen-keyring bleuzen-repo bleuzen-manjaro-kde-setup
     remove_repo
     pacman -Syy
 else
-    echo "Installing..."
+    echo "[BMKS] Installing..."
 
     # Remove packages I don't like
-    pacman -D --asdeps $PACKAGES_TO_REMOVE &>/dev/null
-    pacman -Rns --noconfirm $(pacman -Qqtd)
+    remove_crap
 
     # Install the repo and basic setup packages
     add_repo
@@ -125,11 +141,11 @@ else
     
     # Install LibreOffice
     if [ "$1" == "--no-office" ]; then
-        echo "Skipping installation of LibreOffice"
+        echo "[BMKS] Skipping installation of LibreOffice"
     else
         pacman -S --noconfirm libreoffice-still libreoffice-still-de
     fi
 fi
 
 
-echo "Done."
+echo "[BMKS] Done."
