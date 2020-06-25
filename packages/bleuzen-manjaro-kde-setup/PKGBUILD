@@ -8,7 +8,8 @@ arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          "ttf-dejavu" # font
-         "pamac" "pamac-tray-appindicator" # GUI for pacman
+         "pamac" "pamac-tray-appindicator"
+         "pamac-gtk" "pamac-tray-appindicator" "pamac-flatpak-plugin" # Graphical package manager
          "yay" # AUR helper
          "bash" "bash-completion"
          "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config" # the better shell
