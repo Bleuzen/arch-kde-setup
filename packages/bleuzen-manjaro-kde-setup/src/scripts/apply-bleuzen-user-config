@@ -43,16 +43,6 @@ if [[ "$CHANGE_SHELL" == 1 ]]; then
 fi
 
 
-### Dolphin ###
-
-echo "[Dolphin]
-GroupedSorting=true
-SortOrder=1
-SortRole=modificationtime
-Timestamp=2019,6,13,18,20,57
-Version=4" > ~/Downloads/.directory
-
-
 ### Theming ###
 
 if [[ "$WITH_THEMING" == 1 ]]; then
@@ -90,6 +80,11 @@ EOF
 
     kwriteconfig5 --file katerc --group "KTextEditor Renderer" --key Schema --type string "Breeze Dark"
 fi
+
+
+### Global Shortcuts ###
+
+sed -i 's/Expose=Ctrl+F9/Expose=Meta+A\\tCtrl+F9/g' ~/.config/kglobalshortcutsrc
 
 
 ### KDE misc ###
