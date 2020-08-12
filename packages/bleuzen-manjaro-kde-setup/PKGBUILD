@@ -7,6 +7,7 @@ pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
+         "ttf-dejavu" # font
          "pamac-gtk" "pamac-tray-appindicator" "pamac-flatpak-plugin" # Graphical package manager
          "yay" # AUR helper
          "bash" "bash-completion"
@@ -62,10 +63,10 @@ install=$pkgname.install
 
 package() {
   # Copy pacman hooks
-  mkdir -p "$pkgdir/etc/pacman.d/hooks"
-  mkdir -p "$pkgdir/etc/pacman.d/hooks.bin"
-  install -m644 "$srcdir/pacman/hooks/bleuzen-post-install.hook" "$pkgdir/etc/pacman.d/hooks/"
-  install -m755 "$srcdir/pacman/hooks.bin/bleuzen-post-install.sh" "$pkgdir/etc/pacman.d/hooks.bin/"
+#   mkdir -p "$pkgdir/etc/pacman.d/hooks"
+#   mkdir -p "$pkgdir/etc/pacman.d/hooks.bin"
+#   install -m644 "$srcdir/pacman/hooks/bleuzen-post-install.hook" "$pkgdir/etc/pacman.d/hooks/"
+#   install -m755 "$srcdir/pacman/hooks.bin/bleuzen-post-install.sh" "$pkgdir/etc/pacman.d/hooks.bin/"
 
   # Copy scripts
   mkdir -p "$pkgdir/usr/bin/"
