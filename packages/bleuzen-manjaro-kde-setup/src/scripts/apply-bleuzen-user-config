@@ -107,8 +107,11 @@ kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft --t
 kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight --type string IAX
 kwriteconfig5 --file kwinrc --group Plugins --key CommandAllKey --type string Meta
 kwriteconfig5 --file kwinrc --group Plugins --key blurEnabled --type bool true
-kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled --type bool false
 kwriteconfig5 --file kwinrc --group Plugins --key sheetEnabled --type bool true
+# kwriteconfig5 --file kwinrc --group Plugins --key diminactiveEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_dimscreenEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key glideEnabled --type bool true && kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_fadeEnabled --type bool false
 
 kwriteconfig5 --file breezerc --group Windeco --key DrawTitleBarSeparator --type bool false
 kwriteconfig5 --file breezerc --group Windeco --key TitleAlignment --type string AlignLeft
