@@ -43,16 +43,6 @@ if [[ "$CHANGE_SHELL" == 1 ]]; then
 fi
 
 
-### Dolphin ###
-
-echo "[Dolphin]
-GroupedSorting=true
-SortOrder=1
-SortRole=modificationtime
-Timestamp=2019,6,13,18,20,57
-Version=4" > ~/Downloads/.directory
-
-
 ### Theming ###
 
 if [[ "$WITH_THEMING" == 1 ]]; then
@@ -92,6 +82,11 @@ EOF
 fi
 
 
+### Global Shortcuts ###
+
+sed -i 's/Expose=Ctrl+F9/Expose=Meta+A\\tCtrl+F9/g' ~/.config/kglobalshortcutsrc
+
+
 ### KDE misc ###
 
 kwriteconfig5 --file kcminputrc --group Keyboard --key NumLock --type int 0
@@ -112,8 +107,11 @@ kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft --t
 kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight --type string IAX
 kwriteconfig5 --file kwinrc --group Plugins --key CommandAllKey --type string Meta
 kwriteconfig5 --file kwinrc --group Plugins --key blurEnabled --type bool true
-kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled --type bool false
 kwriteconfig5 --file kwinrc --group Plugins --key sheetEnabled --type bool true
+# kwriteconfig5 --file kwinrc --group Plugins --key diminactiveEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_dimscreenEnabled --type bool true
+kwriteconfig5 --file kwinrc --group Plugins --key glideEnabled --type bool true && kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_fadeEnabled --type bool false
 
 kwriteconfig5 --file breezerc --group Windeco --key DrawTitleBarSeparator --type bool false
 kwriteconfig5 --file breezerc --group Windeco --key TitleAlignment --type string AlignLeft
