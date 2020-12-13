@@ -105,6 +105,7 @@ cat >> $PACMAN_CONFIG <<-EOF
 ###REPO bleuzen###
 [bleuzen]
 SigLevel = PackageRequired
+Server = https://bleuzen.github.io/manjaro-repo/\$repo/\$arch
 Server = https://bleuzen.de/repo/manjaro/\$repo/\$arch
 ###END REPO bleuzen###
 EOF
