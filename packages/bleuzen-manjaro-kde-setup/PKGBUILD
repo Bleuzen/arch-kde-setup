@@ -1,17 +1,16 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2020.10.07
+pkgver=2021.02.11
 pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
 depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          "ttf-dejavu" # font
-         "pamac-gtk" "pamac-tray-icon-plasma" "pamac-flatpak-plugin" # Graphical package manager
          "yay" # AUR helper
          "bash" "bash-completion"
-         "zsh" "zsh-autosuggestions" "zsh-completions" "manjaro-zsh-config" # the better shell
+         "zsh" "zsh-autosuggestions" "zsh-completions"
          "iotop" # Disk activity monitor
          "nethogs" # Network monitor
          "htop" # Process monitor
@@ -25,11 +24,12 @@ depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          "flac" "lame" "vorbis-tools" "opus-tools" # audio codecs
          "pavucontrol-qt"
          "breeze" "breeze-gtk" "breeze-icons" # Used in apply-bleuzen-user-config
-         "materia-gtk-theme" "materia-kde" "kvantum-theme-materia" "papirus-icon-theme" # A theme that I like
+         "kvantum-qt5"
          "hunspell" "hunspell-de" # spell checking
-         "gnome-calculator" # Used in a shortcut
          )
 optdepends=("pacredir"
+            "pamac-gtk" "pamac-tray-icon-plasma" "pamac-flatpak-plugin" # Graphical package manager
+            "manjaro-zsh-config"
             "proaudio-meta"
             "libreoffice-still" "libreoffice-still-de"
             "vlc"
