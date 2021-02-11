@@ -2,7 +2,7 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2021.02.11
-pkgrel=2
+pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
 url="https://github.com/Bleuzen/manjaro-kde-setup"
@@ -16,6 +16,7 @@ depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          "htop" # Process monitor
          "neofetch" # display system information
          "kconfig" # used for apply-bleuzen-kde-user-config script
+         "kded" # KDE system level services
          "python" # used for my scripts
          "xdg-desktop-portal-kde"
          "plasma-browser-integration"
