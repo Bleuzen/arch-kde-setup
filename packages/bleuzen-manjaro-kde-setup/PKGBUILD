@@ -2,10 +2,10 @@
 
 pkgname=bleuzen-manjaro-kde-setup
 pkgver=2021.02.15
-pkgrel=1
+pkgrel=2
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
-url="https://github.com/Bleuzen/manjaro-kde-setup"
+url='https://github.com/Bleuzen/arch-kde-setup'
 depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          "ttf-dejavu" # font
          "yay" # AUR helper

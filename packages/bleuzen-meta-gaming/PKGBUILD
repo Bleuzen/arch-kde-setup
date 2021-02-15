@@ -3,7 +3,7 @@ pkgver=2019.08.05
 pkgrel=1
 pkgdesc="Metapackage for gaming"
 arch=("x86_64")
-url="https://github.com/Bleuzen/manjaro-kde-setup"
+url='https://github.com/Bleuzen/arch-kde-setup'
 depends=("steam-manjaro"
          "game-devices-udev"
          "wine" "wine-mono" "wine_gecko" "winetricks" "vkd3d" "lib32-vkd3d"
