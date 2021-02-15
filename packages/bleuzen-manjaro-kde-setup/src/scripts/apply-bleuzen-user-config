@@ -39,7 +39,9 @@ if [[ "$CHANGE_SHELL" == 1 ]]; then
     fi
 
     cp /etc/skel/.zshrc /home/$USER/
-    #yes | cp /etc/skel/.zshrc /home/$USER/ # Overwrite zsh config if it exists
+    cp /etc/skel/.p10k.zsh /home/$USER/
+#     yes | cp /etc/skel/.zshrc /home/$USER/ # Overwrite zsh config if it exists
+#     yes | cp /etc/skel/.p10k.zsh /home/$USER/
 fi
 
 

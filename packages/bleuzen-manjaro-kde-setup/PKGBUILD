@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2021.02.11
+pkgver=2021.02.15
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          "ttf-dejavu" # font
          "yay" # AUR helper
          "bash" "bash-completion"
-         "zsh" "zsh-autosuggestions" "zsh-completions"
+         "zsh" "zsh-completions" "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-theme-powerlevel10k"
          "iotop" # Disk activity monitor
          "nethogs" # Network monitor
          "htop" # Process monitor
@@ -30,7 +30,6 @@ depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          )
 optdepends=("pacredir"
             "pamac-gtk" "pamac-tray-icon-plasma" "pamac-flatpak-plugin" # Graphical package manager
-            "manjaro-zsh-config"
             "proaudio-meta"
             "libreoffice-still" "libreoffice-still-de"
             "vlc"
@@ -72,12 +71,17 @@ package() {
 
   # Copy scripts
   mkdir -p "$pkgdir/usr/bin/"
-  for file in "$srcdir/scripts/*"
-  do
+  for file in "$srcdir/scripts/*"; do
     install -m755 $file "$pkgdir/usr/bin/"
   done
 
   # Copy hotkeys
   mkdir -p "$pkgdir/usr/share/khotkeys/"
-  install "$srcdir/bleuzensshortcuts.khotkeys" "$pkgdir/usr/share/khotkeys/"
+  install "$srcdir/config/bleuzensshortcuts.khotkeys" "$pkgdir/usr/share/khotkeys/"
+  
+  # Copy zsh config
+  mkdir -p "$pkgdir/etc/skel"
+  for file in $(ls -1A "$srcdir/config/zsh/"); do
+    install "$srcdir/config/zsh/$file" "$pkgdir/etc/skel/"
+  done
 }
