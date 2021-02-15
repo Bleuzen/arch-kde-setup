@@ -1,5 +1,7 @@
-# manjaro-kde-setup
-My Manjaro KDE setup
+# arch-kde-setup
+Post-install scripts for Arch Linux / Manjaro with KDE
+
+This does not install KDE, it assumes it is already installed.
 
 #### Install
 
