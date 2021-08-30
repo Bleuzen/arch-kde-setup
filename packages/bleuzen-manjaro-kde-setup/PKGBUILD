@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=bleuzen-manjaro-kde-setup
-pkgver=2021.02.16
+pkgver=2021.08.30
 pkgrel=1
 pkgdesc="My Manjaro KDE setup"
 arch=("x86_64")
@@ -9,6 +9,7 @@ url='https://github.com/Bleuzen/arch-kde-setup'
 depends=("bleuzen-keyring" "bleuzen-repo" # my base packages
          "ttf-dejavu" # font
          "yay" # AUR helper
+         "pacman-contrib"
          "bash" "bash-completion"
          "zsh" "zsh-completions" "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-theme-powerlevel10k"
          "iotop" # Disk activity monitor
