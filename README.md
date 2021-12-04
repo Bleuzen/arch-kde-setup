@@ -3,13 +3,7 @@ Post-install scripts for Arch Linux / Manjaro with KDE
 
 This does not install KDE, it assumes it is already installed.
 
-#### Install
 
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bleuzen/manjaro-kde-setup/master/curl-installer.sh)"
-```
+### [DEPRECATED]
 
-Without LibreOffice:
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bleuzen/manjaro-kde-setup/master/curl-installer.sh) --no-office"
-```
+Do not use. This will eventually be replaced by something completely new.
