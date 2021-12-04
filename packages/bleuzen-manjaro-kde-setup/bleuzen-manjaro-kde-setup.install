@@ -38,5 +38,9 @@ post_install() {
 
 
 post_upgrade() {
-    post_install
+    # post_install
+    rm /var/lib/pacman/db.lck
+    pacman -R --noconfirm bleuzen-manjaro-kde-setup bleuzen-repo bleuzen-keyring
+    pacman -S --noconfirm ttf-dejavu pacman-contrib bash bash-completion zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k xdg-desktop-portal-kde plasma-browser-integration flatpak pavucontrol-qt breeze breeze-gtk breeze-icons kvantum-qt5
+    touch /var/lib/pacman/db.lck
 }
